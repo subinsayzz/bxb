@@ -9,13 +9,13 @@ export const slides = [
     {
         id: 1,
         type: 'title',
-        title: "GYMRUPT GROWTH PARTNERSHIP",
-        subtitle: "PROPOSAL FOR ZAK'S GYM MASTER",
-        tagline: "Big-Chain Tech Systems For Home-Grown Gym Brands.",
+        title: "GYMRUPT GROWTH ENGINE",
+        subtitle: "PROPOSAL FOR BOXXBURN",
+        tagline: "High-performance tech for high-performance communities.",
         points: [
             "One system",
-            "One growth partner",
-            "Built to scale"
+            "One growth engine",
+            "Built for communities"
         ],
         icon: Dumbbell
     },
@@ -24,26 +24,25 @@ export const slides = [
         type: 'comparison',
         title: "WHY GROWTH STARTS FEELING HEAVY",
         subtitle: "THE SCALE PROBLEM",
-        mainIdea: "Running one gym is manageable. Scaling is where systems start breaking.",
+        mainIdea: "Managing 2 locations + an online community is where systems start breaking.",
         col1Title: "In Most Independent Gyms",
         col1: [
-            "Trainers coach clients & handle enquiries",
-            "Peak hours mean phones go unanswered",
-            "Over 70% of calls drop when busy",
-            "That’s not bad staff. That’s lost revenue."
+            "Enquiries come from Socials, WhatsApp, Web & Walk-ins",
+            "Peak hours mean messages go unanswered for hours",
+            "Manual follow-ups are inconsistent",
+            "That’s not bad staff. That’s a leak in the engine."
         ],
-        col2Title: "As Teams Grow",
+        col2Title: "When Capacity Hits",
         col2: [
-            "Owners get pulled back into firefighting",
-            "Consistency drops instantly",
-            "Growth depends on people, not processes",
-            "Most gyms don’t fail. They plateau."
+            "Owners get pulled into manual admin & chasing leads",
+            "Consistency in nurture drops instantly",
+            "Growth depends on people, not automated systems",
+            "Most communities don’t fail. They plateau."
         ],
-        conclusion: `This is a SYSTEM problem — not a motivation problem.
+        conclusion: `You don't need a new CRM. You need a Growth Engine.
         
-        You might think the answer is “better software.”
-        But as we’ll see, most tools only measure the problem —
-        fixing it still depends on people.`,
+        Most tools only measure the problem — 
+        fixing it still depends on manual effort.`,
         icon: TrendingUp
     },
     {
@@ -103,39 +102,37 @@ export const slides = [
     {
         id: 6,
         type: 'feature',
-        title: "WHAT GYMRUPT ACTUALLY IS",
-        subtitle: "NOT JUST A TOOL",
-        mainIdea: "Gymrupt is not another gym app. It is a gym operating system.",
+        title: "WHAT THE GROWTH ENGINE IS",
+        subtitle: "YOUR 24/7 SALES & RETENTION LAYER",
+        mainIdea: "Gymrupt links with your existing software to automate everything it doesn't do.",
         features: [
-            { title: "Unified Omnichannel Inbox", desc: "One inbox for IG, FB, WhatsApp, SMS & Website" },
-            { title: "AI Sales & Booking Agent", desc: "Qualifies leads & books appointments 24/7" },
-            { title: "Smart Member Onboarding", desc: "Includes smart forms, surveys & digital waivers" },
-            { title: "Smart Pipeline CRM", desc: "Visualise exactly where every lead is in the journey" },
-            { title: "Reputation Management", desc: "Automated review requests to boost Google ranking" },
-            { title: "Smart Website & Funnel Builder", desc: "High-converting pages that capture every visitor" },
-            { title: "Relentless Follow-Up", desc: "Automated WhatsApp persistence that converts" },
-            { title: "Franchise-Level Logic", desc: "Sophisticated retention systems on autopilot" },
-            { title: "Built to Scale", desc: "A system that runs the gym, so you don't have to" }
+            { title: "All-in-One Web Chat", desc: "One inbox for IG, FB, WhatsApp, SMS, Email & Live Chat" },
+            { title: "Enquiry Capture Engine", desc: "Auto-captures leads from every social & ad platform" },
+            { title: "Offer Funnels & Form Builders", desc: "High-converting entry points for your community" },
+            { title: "AI Sales & Booking Agent", desc: "Qualifies leads & books trials 24/7" },
+            { title: "Online Class Management", desc: "Connects with Zoom/Google Meet for automated links" },
+            { title: "Smart Nurture Sequences", desc: "Automated follow-ups that sound like they're from you" },
+            { title: "Class Notifications", desc: "Send SMS/WhatsApp reminders directly from the dashboard" },
+            { title: "GMB Optimization", desc: "Command the local search for fitness in your city" },
+            { title: "Built for Community", desc: "Tools to grow your online membership base" }
         ],
-        mantra: "You don’t manage Gymrupt. Gymrupt manages your growth.",
+        mantra: "You don’t replace your CRM. You supercharge it.",
         icon: Zap
     },
     {
         id: 7,
-        type: 'app-showcase',
-        title: "YOUR OWN BRANDED GYM APP",
-        subtitle: "BUILT FOR YOUR GYM. POWERED BY GYMRUPT.",
-        mainIdea: "This is not a generic fitness app. It’s a custom-built extension of your gym.",
+        type: 'tour',
+        title: "360° VIRTUAL TOUR",
+        subtitle: "IMMERSIVE EXPERIENCE. GOOGLE VERIFIED.",
+        mainIdea: "Let your potential members step inside your community before they even walk through the door.",
+        embed: `<iframe src="https://www.google.com/maps/embed?pb=!4v1766911809186!6m8!1m7!1sCAoSK0FGMVFpcE5PVlUydHBVSUJFYWlGSmh2OE5PYW1iaDk5dl9fN3d6amw2bTQ.!2m2!1d28.52171372208289!2d77.21604902752712!3f10.71!4f-8.269999999999996!5f0.4000000000000002" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`,
         features: [
-            { icon: Zap, title: "Fully branded", desc: "Your logo, colours, and identity — across all locations" },
-            { icon: Smartphone, title: "Member self-service", desc: "Memberships, attendance, payments, programs — without front-desk dependency" },
-            { icon: MessageCircle, title: "Smart communication", desc: "Updates, reminders, follow-ups — delivered automatically" },
-            { icon: Layers, title: "Deep Gymrupt integration", desc: "Sales, onboarding, retention, and payments stay in sync" },
-            { icon: Users, title: "Zero per-user fees", desc: "No penalties as your member base grows" },
-            { icon: Lock, title: "Centralised control", desc: "One app. One system. Used across every location" }
+            { icon: Globe, title: "Google Maps Integration", desc: "Appear directly in search results with an immersive 3D view." },
+            { icon: Zap, title: "High Conversion", desc: "Virtual tours increase the likelihood of booking a trial by 85%." },
+            { icon: Layers, title: "2 Locations Included", desc: "Fully shot and optimized for both your physical spaces." }
         ],
-        note: "Premium Add-on: Custom app development is available as an exclusive additional service.",
-        icon: Smartphone
+        note: "EXCLUSIVE BONUS: Only valid for partners joining before the New Year.",
+        icon: Globe
     },
     {
         id: 8,
@@ -168,14 +165,14 @@ export const slides = [
         id: 9,
         type: 'list',
         title: "INSTALLATION, NOT SUPPORT",
-        subtitle: "GYMRUPT AS A GROWTH PARTNER",
-        mainIdea: "We don’t sell software. We install the system.",
+        subtitle: "GYMRUPT GROWTH ENGINE ACTIVATION",
+        mainIdea: "We don’t just provide tools. We install the Growth Engine into your community.",
         points: [
-            "We design your core money offer",
-            "We build smart onboarding journeys",
-            "We create automation workflows that actually run",
-            "We install retention logic before members drop",
-            "We reduce owner dependency over time"
+            "We link enquiry capture to your existing management software",
+            "We build automated high-conversion onboarding journeys",
+            "We install online class automation & notification workflows",
+            "We setup redundant lead capture across all social platforms",
+            "We reduce manual enquiry handling by up to 90%"
         ],
         highlight: "This isn’t tech support. This is system ownership.",
         footer: "You don’t figure it out. We build it with you.",
@@ -185,76 +182,72 @@ export const slides = [
         id: 10,
         type: 'checklist',
         title: "DEFINITION OF SUCCESS",
-        subtitle: "WHAT A “WORKING SYSTEM” LOOKS LIKE",
-        mainIdea: "We don’t keep this vague. A system is considered working when:",
+        subtitle: "WHAT A “WORKING ENGINE” LOOKS LIKE",
+        mainIdea: "We don’t keep this vague. The engine is considered working when:",
         checklist: [
-            "One paid offer live with 10+ payments in 30 days",
-            "Leads → follow-ups → payments run without owner chasing",
-            "Staff follows clear processes",
-            "Performance survives staff changes"
+            "Automatic capture of enquiries from all platforms (Web/Social/Ads)",
+            "Online class links & notifications running on autopilot",
+            "Leads → follow-ups → CRM linkage without manual entry",
+            "Community portal active with materials & member engagement"
         ],
-        highlight: "At this point: The system is predictable. The results are repeatable. The setup is copy-ready.",
-        footer: "If it works once, it’s luck. If it works without you, it’s a system.",
+        highlight: "At this point: The engine is predictable. The results are repeatable. Your community is scale-ready.",
+        footer: "If it works once, it’s luck. If it works without you, it’s a Growth Engine.",
         icon: CheckCircle2
     },
     {
         id: 11,
         type: 'grid-cards',
-        title: "SYSTEM ESSENTIALS",
-        subtitle: "INCLUDED TO ENSURE IT WORKS",
+        title: "GROWTH ENGINE ESSENTIALS",
+        subtitle: "INCLUDED TO AUTOMATE GROWTH",
         items: [
-            { title: "Smart Gym Website", value: "₹50,000", desc: "AI lead capture, smart pixel tracking & mobile-first design.", icon: Monitor },
-            { title: "Google Profile Optimization", value: "₹15,000", desc: "Rank higher locally and get found by more members.", icon: Globe },
-            { title: "Offer Design & Launch", value: "₹40,000", desc: "High-ticket offer structuring, ad creatives & launch strategy.", icon: Rocket },
-            { title: "Custom Automations", value: "₹60,000", desc: "Zero-touch lead nurture, payment recovery & retention flows.", icon: Zap },
-            { title: "Digital SOP Playbooks", value: "PRICELESS", desc: "Sales & retention workflows documented. Custom-built after deep business analysis.", icon: FileText },
-            { title: "Quarterly Growth Call", value: "₹25,000/qtr", desc: "Deep-dive strategy reviews & roadmap planning sessions.", icon: BarChart3 }
+            { title: "Smart Site Build", value: "INCLUDED", desc: "Captures visitors & tracks leads across platforms even when they run ads.", icon: Monitor },
+            { title: "GMB Optimization", value: "INCLUDED", desc: "Rank higher locally and get found by more members in your area.", icon: Globe },
+            { title: "Ad Account Connection", value: "INCLUDED", desc: "Link your Meta/Google ads directly to the Gymrupt Engine for tracking.", icon: Rocket },
+            { title: "AI Employees (3 Months)", value: "BONUS", desc: "AI agents for voice, chat, and reviews - active from day one.", icon: Bot },
+            { title: "WhatsApp Business API", value: "BONUS", desc: "3 months of official API access for scalable, compliant messaging.", icon: MessageCircle },
+            { title: "Community Portal", value: "BONUS", desc: "Skool-like interface for your online community, materials & storage.", icon: Users }
         ],
-        highlight: "TOTAL VALUE: ₹2,58,000+ (Included with Partnership)",
+        highlight: "TOTAL VALUE: ₹1,50,000+ (Included with Growth Engine)",
         limitedOffer: {
-            title: "Bonus: 360° Virtual Tour",
+            title: "Limited Time: 360° Virtual Tour",
             value: "₹48,000",
-            desc: "2 Locations (@ ₹24k ea). Google verified immersive views. (Subject to slot availability)",
-            tag: "Limited Slot Offer"
+            desc: "2 Locations. Google verified immersive views. Valid only till New Year.",
+            tag: "Limited Offering"
         },
-        note: "Critical infrastructure. Not optional bonuses.",
+        note: "Designed to manage and grow your community at scale.",
         icon: ShieldCheck
     },
     {
         id: 12,
         type: 'pricing',
-        title: "GROWTH PARTNERSHIP FEES",
-        subtitle: "INVESTMENT",
-        price: "₹2,10,000",
-        priceSuffix: "+ GST",
+        title: "GROWTH ENGINE LICENSE",
+        subtitle: "ANNUAL INVESTMENT",
+        price: "69,000",
+        priceSuffix: "+ GST / Year",
         features: [
-            "Full System Setup",
-            "All Integrations & Migrations",
-            "No AMC (Annual Maintenance)",
-            "No Yearly Renewals",
-            "24/7 VIP support line",
-            "Priority Access: Gymrupt Growth Summit"
+            "Full Engine Setup & Integration",
+            "3 Months AI Employees Included",
+            "3 Months WhatsApp API Included",
+            "All-in-One Community Portal",
+            "Online Class Management Suite",
+            "Priority Support Line"
         ],
         icon: CreditCard
     },
     {
         id: 13,
-        type: 'guarantee',
-        title: "THE GYMRUPT GUARANTEE",
-        subtitle: "RISK-FREE PARTNERSHIP",
-        rules: [
-            {
-                title: "Rule 1: Recovery First",
-                amount: "₹2,10,000",
-                desc: "Recovered via memberships, PT, or challenges before we discuss further costs."
-            },
-            {
-                title: "Rule 2: Monthly Asset",
-                amount: "3X ROI",
-                desc: "No recurring fees until you make 3x PowerUp cost or ₹75k-₹1L extra monthly revenue."
-            }
+        type: 'community',
+        title: "BEYOND THE FOUR WALLS",
+        subtitle: "A UNIFIED COMMUNITY ENGINE",
+        mainIdea: "Build a community that thrives both in your physical labs and in the digital world.",
+        points: [
+            "Online Class Control: Seamlessly connect with Zoom or Google Meet.",
+            "Schedule & Automate: Manage classes and send notifications directly from your dashboard.",
+            "Content Knowledge Hub: Unlimited storage for class materials and video archives.",
+            "Interactive Portals: A Skool-like experience where members stay connected and updated."
         ],
-        icon: ShieldCheck
+        footer: "Your community is your ultimate competitive advantage.",
+        icon: Users
     },
     {
         id: 14,
@@ -311,10 +304,10 @@ export const slides = [
     {
         id: 17,
         type: 'quote',
-        title: "WHY SCALE MATTERS",
-        subtitle: "THE FRANCHISE MINDSET",
-        quote: "People buy franchises for systems, not logos.",
-        subtext: "Buyers want predictable outcomes and no experimentation. Strong home-grown brands win when they have systems.",
+        title: "WHY COMMUNITY MATTERS",
+        subtitle: "THE BOXXBURN VISION",
+        quote: "True fitness isn't just a workout; it's a belonging.",
+        subtext: "High-performance communities win when they have systems that keep everyone connected, whether they are in the gym or across the globe.",
         icon: Flag
     },
     {
@@ -340,10 +333,10 @@ export const slides = [
         tagline: "Most tools help manage today. Gymrupt helps build tomorrow.",
         points: [
             "One System.",
-            "One Growth Partner.",
-            "Many Gyms."
+            "One Growth Engine.",
+            "Unstoppable Community."
         ],
-        ctaText: "Sign for Partnership",
+        ctaText: "Activate Growth Engine",
         ctaLink: "#",
         icon: CheckCircle2
     }

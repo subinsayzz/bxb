@@ -273,7 +273,7 @@ const ComparisonSlide = ({ slide }) => (
 );
 
 const MembershipCard = () => (
-  <div className="w-full max-w-sm aspect-[1.586] bg-gradient-to-br from-zinc-950 via-black to-zinc-900 rounded-2xl p-6 text-white shadow-2xl border border-white/10 relative overflow-hidden group mx-auto flex flex-col justify-between transform transition-transform hover:scale-105 duration-500 hover:border-yellow-500/50">
+  <div className="w-full max-w-sm aspect-[1.586] bg-gradient-to-br from-zinc-950 via-black to-zinc-900 rounded-2xl p-6 text-white shadow-2xl border border-white/10 relative overflow-hidden group mx-auto flex flex-col justify-between transform transition-transform hover:scale-105 duration-500 hover:border-accent/50">
 
     {/* Shine Effect */}
     <div className="absolute inset-0 bg-gradient-to-tr from-white/5 via-transparent to-transparent opacity-50 pointer-events-none" />
@@ -281,37 +281,38 @@ const MembershipCard = () => (
 
     {/* Top Row: Logo & Badge */}
     <div className="flex justify-between items-start relative z-10 w-full mb-4">
-      <img src="/assets/logo.png" alt="Gymrupt" className="h-5 opacity-90 object-contain" />
-      <div className="border border-yellow-500/80 text-yellow-500 text-[8px] font-bold px-2 py-0.5 rounded tracking-widest uppercase bg-yellow-500/5 backdrop-blur-sm">
-        LIFETIME PARTNER
+      <div className="text-white font-black text-xl italic tracking-tighter">
+        BOXX<span className="text-accent">BURN</span>
+      </div>
+      <div className="border border-accent text-accent text-[8px] font-bold px-2 py-0.5 rounded tracking-widest uppercase bg-accent/5 backdrop-blur-sm">
+        GROWTH ENGINE
       </div>
     </div>
 
     {/* Middle Row: Chip & Number */}
     <div className="relative z-10 w-full flex flex-col gap-4 mt-2">
       {/* Golden Chip */}
-      <div className="w-10 h-7 bg-gradient-to-br from-amber-200 via-amber-500 to-amber-700 rounded-md relative overflow-hidden shadow-md border border-amber-500/50 flex flex-col justify-center gap-[2px] px-0.5">
+      <div className="w-10 h-7 bg-gradient-to-br from-zinc-400 via-zinc-200 to-zinc-500 rounded-md relative overflow-hidden shadow-md border border-white/20 flex flex-col justify-center gap-[2px] px-0.5">
         <div className="w-full h-px bg-black/10 border-b border-white/20" />
         <div className="w-full h-px bg-black/10 border-b border-white/20" />
         <div className="w-full h-px bg-black/10 border-b border-white/20" />
-        <div className="absolute top-1/2 -right-2 w-4 h-8 bg-gradient-to-l from-white/30 to-transparent transform -translate-y-1/2 rotate-12" />
       </div>
 
       {/* Card Number */}
       <div className="font-mono text-lg tracking-[0.2em] text-white/95 drop-shadow-sm whitespace-nowrap pl-1">
-        •••• •••• •••• 0421
+        •••• •••• •••• 2024
       </div>
     </div>
 
     {/* Bottom Row: Holder & Validity */}
     <div className="flex justify-between items-end relative z-10 w-full mt-auto pt-4">
       <div className="flex flex-col text-left">
-        <span className="text-[7px] text-zinc-500 tracking-widest font-bold uppercase mb-0.5">CARD HOLDER</span>
-        <span className="text-xs tracking-widest font-bold uppercase text-zinc-100">ZAK'S GYM MASTER</span>
+        <span className="text-[7px] text-zinc-500 tracking-widest font-bold uppercase mb-0.5">MEMBER ID</span>
+        <span className="text-xs tracking-widest font-bold uppercase text-zinc-100">BXB-COMMUNITY</span>
       </div>
       <div className="flex flex-col items-end text-right">
         <span className="text-[7px] text-zinc-500 tracking-widest font-bold uppercase mb-0.5">VALID THRU</span>
-        <span className="text-xs tracking-widest font-bold uppercase text-zinc-100">FOREVER</span>
+        <span className="text-xs tracking-widest font-bold uppercase text-zinc-100">ANNUAL LICENSE</span>
       </div>
     </div>
   </div>
@@ -548,6 +549,111 @@ const CostCalculatorSlide = ({ slide }) => {
     </div>
   );
 }
+
+const TourSlide = ({ slide }) => (
+  <div className="grid lg:grid-cols-2 gap-12 h-full items-center">
+    {/* Tour View */}
+    <motion.div
+      initial={{ opacity: 0, x: -50 }}
+      animate={{ opacity: 1, x: 0 }}
+      className="w-full h-[300px] md:h-[450px] bg-white/5 rounded-3xl overflow-hidden border border-white/10 shadow-2xl relative group"
+    >
+      <div className="absolute inset-0 bg-accent/5 pointer-events-none group-hover:bg-transparent transition-colors z-10" />
+      <div className="w-full h-full" dangerouslySetInnerHTML={{ __html: slide.embed }} />
+      <div className="absolute top-4 left-4 z-20 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10 flex items-center gap-2">
+        <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+        <span className="text-[10px] font-bold text-white uppercase tracking-widest">Live 360° Preview</span>
+      </div>
+    </motion.div>
+
+    {/* Content */}
+    <div className="space-y-6">
+      <div className="text-2xl md:text-3xl text-white font-heading font-bold leading-tight">
+        {slide.mainIdea}
+      </div>
+      <div className="grid gap-4">
+        {slide.features.map((feature, i) => (
+          <motion.div
+            key={i}
+            custom={i}
+            variants={contentVariants}
+            initial="hidden"
+            animate="visible"
+            className="flex items-start gap-4 p-5 bg-white/5 rounded-2xl border border-white/5 hover:border-accent/40 transition-all group"
+          >
+            <div className="p-2 bg-accent/10 rounded-xl text-accent group-hover:scale-110 transition-transform">
+              <feature.icon size={24} />
+            </div>
+            <div>
+              <div className="text-lg font-bold text-white mb-1">{feature.title}</div>
+              <div className="text-sm text-white/60 leading-relaxed">{feature.desc}</div>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+      {slide.note && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+          className="p-4 bg-accent/10 border-l-4 border-accent rounded-r-xl"
+        >
+          <p className="text-accent font-bold italic text-sm">{slide.note}</p>
+        </motion.div>
+      )}
+    </div>
+  </div>
+);
+
+const CommunitySlide = ({ slide }) => (
+  <div className="h-full w-full flex flex-col justify-center items-center">
+    <div className="max-w-4xl w-full">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        className="bg-gradient-to-br from-white/5 to-transparent border border-white/10 rounded-[40px] p-8 md:p-12 backdrop-blur-xl relative overflow-hidden"
+      >
+        <div className="absolute top-0 right-0 p-32 bg-accent/5 blur-[100px] rounded-full pointer-events-none" />
+
+        <div className="text-2xl md:text-4xl text-white font-heading font-black mb-8 text-center uppercase tracking-tight">
+          {slide.mainIdea}
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-6">
+          {slide.points.map((point, i) => {
+            const [title, ...rest] = point.split(':');
+            return (
+              <motion.div
+                key={i}
+                custom={i}
+                variants={contentVariants}
+                initial="hidden"
+                animate="visible"
+                className="p-6 bg-white/5 rounded-2xl border border-white/5 hover:border-accent/30 transition-all group"
+              >
+                <div className="text-accent font-bold text-lg mb-2">{title}</div>
+                <div className="text-white/60 text-sm leading-relaxed">{rest.join(':').trim()}</div>
+              </motion.div>
+            );
+          })}
+        </div>
+      </motion.div>
+
+      {slide.footer && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.6 }}
+          className="mt-12 text-center"
+        >
+          <span className="px-6 py-3 rounded-full bg-accent/20 border border-accent/20 text-accent font-black tracking-widest uppercase text-xs">
+            {slide.footer}
+          </span>
+        </motion.div>
+      )}
+    </div>
+  </div>
+);
 
 const AppShowcaseSlide = ({ slide }) => (
   <div className="grid md:grid-cols-2 gap-12 h-full items-center">
@@ -946,6 +1052,8 @@ function App() {
       case 'guarantee': return <GuaranteeSlide slide={slide} />;
       case 'cost-calculator': return <CostCalculatorSlide slide={slide} />;
       case 'app-showcase': return <AppShowcaseSlide slide={slide} />;
+      case 'tour': return <TourSlide slide={slide} />;
+      case 'community': return <CommunitySlide slide={slide} />;
       case 'grid-cards':
       case 'powerups':
         return <GridSlide slide={slide} />;
