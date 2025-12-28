@@ -358,7 +358,7 @@ export const slides = [
             "Unstoppable Community."
         ],
         ctaText: "Activate Growth Engine",
-        ctaLink: "#",
+        ctaLink: "https://api.gymrupt.com/widget/survey/rdFtnAEWB7MU9s8YYLhE",
         icon: CheckCircle2
     }
 ];
