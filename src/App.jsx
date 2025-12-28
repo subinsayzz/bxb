@@ -345,7 +345,7 @@ const PricingSlide = ({ slide }) => (
             <div className="text-center xl:text-left flex-1 space-y-2">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-light border border-white/5 shadow-inner mb-2">
                 <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-400">One-Time Investment</span>
+                <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-400">Annual Investment</span>
               </div>
               <div className="flex items-baseline justify-center xl:justify-start gap-2">
                 <div className="text-5xl md:text-6xl lg:text-7xl font-black font-heading tracking-tighter text-white bg-clip-text text-transparent bg-gradient-to-b from-white to-white/70">
@@ -356,7 +356,7 @@ const PricingSlide = ({ slide }) => (
                 )}
               </div>
               <div className="text-sm text-white/40 font-medium tracking-wide">
-                Own the asset clearly. No hidden fees.
+                Annual license for growth. No hidden fees.
               </div>
             </div>
           </div>
@@ -540,7 +540,7 @@ const CostCalculatorSlide = ({ slide }) => {
 
             <div className="bg-slate-900 text-white p-4 rounded-xl text-center">
               <div className="text-accent text-xs font-bold uppercase tracking-wider mb-1">With Gymrupt</div>
-              <div className="text-2xl font-black">ONE PRICE</div>
+              <div className="text-2xl font-black">ONE ANNUAL FEE</div>
               <div className="text-white/60 text-[10px] mt-1">Replaces everything above.</div>
             </div>
           </div>
