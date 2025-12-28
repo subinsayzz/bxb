@@ -1,0 +1,15 @@
+[build]
+  publish = "dist"
+  command = "npm run build"
+
+[[redirects]]
+  from = "/"
+  to = "/boxxburn/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/*"
+  to = "/boxxburn/index.html"
+  status = 200
+  force = false
