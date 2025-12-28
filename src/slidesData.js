@@ -87,17 +87,17 @@ export const slides = [
     {
         id: 5,
         type: 'list',
-        title: "HOW ELITE COMMUNITIES SCALE",
-        subtitle: "SYSTEMS OVER MANUAL EFFORT",
-        mainIdea: "High-performance communities like FitMomsClub don't rely on manual hustle. They rely on exceptionally clear systems.",
+        title: "SCALING THROUGH AUTOMATION",
+        subtitle: "CLIENT CASE: FITMOMSCLUB",
+        mainIdea: "We helped FitMomsClub transition from manual hustle to a scalable system that manages communities across borders.",
         points: [
-            "Standardised onboarding & sales journeys (Every single time)",
-            "Automated follow-ups & retention logic (Nothing slips through the cracks)",
-            "Unified reporting across all locations & online zones",
-            "Proven systems we've deployed for elite communities like FitMomsClub",
-            "Systems that ensure performance doesn't change when people do"
+            "We automated their lead capture across multiple social platforms",
+            "We built the system that handles their enquiries 24/7 without manual intervention",
+            "We installed the tracking layer that monitors community growth in real-time",
+            "We standardized their onboarding so every member gets the same 'Elite' experience",
+            "Result: Their team focuses on community, while the engine focuses on the admin"
         ],
-        footer: "The system runs the community. People run the system.",
+        footer: "We don't just provide software. We install growth systems.",
         icon: LayoutGrid
     },
     {
