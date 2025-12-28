@@ -76,29 +76,49 @@ export const slides = [
         subtitle: "STAFF & CONSISTENCY",
         mainIdea: "When software doesn’t act, people become the system. And that’s where growth slows.",
         points: [
-            "Sales & Service depend on 'good staff', not systems",
-            "Performance drops overnight when staff leave",
-            "Knowledge lives in people, not processes",
-            "Results: Inconsistent, hard to repeat, impossible to scale"
+            "The 'Good Staff' Trap: Success depends on finding 'rockstars', not following a repeatable system.",
+            "Fragile Continuity: When a key person leaves, your sales momentum and member relationships vanish with them.",
+            "The Invisible Ceiling: There is a physical limit to how many enquiries one person can handle manually.",
+            "The Leak: 40% of leads are lost simply because they weren't called within the first 5 minutes."
         ],
         footer: "Elite communities don’t scale people. They scale systems.",
         icon: Users
     },
     {
         id: 5,
-        type: 'list',
-        title: "SCALING THROUGH AUTOMATION",
-        subtitle: "CLIENT CASE: FITMOMSCLUB",
-        mainIdea: "We helped FitMomsClub transition from manual hustle to a scalable system that manages communities across borders.",
-        points: [
-            "We automated their lead capture across multiple social platforms",
-            "We built the system that handles their enquiries 24/7 without manual intervention",
-            "We installed the tracking layer that monitors community growth in real-time",
-            "We standardized their onboarding so every member gets the same 'Elite' experience",
-            "Result: Their team focuses on community, while the engine focuses on the admin"
+        type: 'grid-cards',
+        title: "THE FITMOMSCLUB BLUEPRINT",
+        subtitle: "CASE STUDY: BORDERLESS AUTOMATION",
+        mainIdea: "How we built a system that allowed an elite community-first brand to scale globally without adding a single admin staff.",
+        items: [
+            {
+                title: "The 60-Second Reply",
+                desc: "DMs used to sit for hours. Now, every Instagram, FB, and WhatsApp enquiry get an AI-powered response in < 60s, even at 3 AM.",
+                icon: MessageCircle,
+                value: "INSTANT"
+            },
+            {
+                title: "Global Intelligence",
+                desc: "Zero fragmented data. One dashboard tracking growth metrics across India, UAE, and Singapore in real-time.",
+                icon: Globe,
+                value: "BORDERLESS"
+            },
+            {
+                title: "Zero-Friction Onboarding",
+                desc: "Membership access, welcome kits, and community links delivered the exact second the payment is confirmed. No manual delay.",
+                icon: Zap,
+                value: "REAL-TIME"
+            },
+            {
+                title: "The 'Admin-Free' Zone",
+                desc: "We automated 90% of the manual follow-up hustle, saving the team 20+ hours of admin work every single week.",
+                icon: Bot,
+                value: "90% AUTO"
+            }
         ],
-        footer: "We don't just provide software. We install growth systems.",
-        icon: LayoutGrid
+        highlight: "RESULT: Scaled to 3 countries with the same core team size.",
+        footer: "We don't just provide software. We install growth engines.",
+        icon: Rocket
     },
     {
         id: 6,

@@ -733,12 +733,16 @@ const AppShowcaseSlide = ({ slide }) => (
 );
 
 const GridSlide = ({ slide }) => (
-  <div className="h-full flex flex-col overflow-y-auto">
-    {slide.note && <div className="text-accent font-bold mb-6 tracking-widest uppercase text-sm">{slide.note}</div>}
+  <div className="h-full flex flex-col overflow-y-auto custom-scrollbar pr-2">
+    {slide.note && (
+      <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 border border-accent/20 rounded-full text-accent font-bold mb-6 tracking-widest uppercase text-[10px] w-fit">
+        <Zap size={14} /> {slide.note}
+      </div>
+    )}
 
-    {slide.mainIdea && <div className="text-xl text-white/80 mb-8">{slide.mainIdea}</div>}
+    {slide.mainIdea && <div className="text-xl md:text-2xl text-white/70 mb-10 font-medium leading-relaxed max-w-4xl">{slide.mainIdea}</div>}
 
-    <div className={`grid gap-6 ${slide.items.length > 4 ? 'md:grid-cols-3' : 'md:grid-cols-2'}`}>
+    <div className={`grid gap-5 md:gap-6 ${slide.items.length > 4 ? 'md:grid-cols-3' : 'md:grid-cols-2'}`}>
       {slide.items.map((item, i) => (
         <motion.div
           key={i}
@@ -746,22 +750,32 @@ const GridSlide = ({ slide }) => (
           variants={contentVariants}
           initial="hidden"
           animate="visible"
-          className="p-6 bg-white/5 border border-white/10 rounded-xl flex flex-col gap-3 hover:border-accent/40 hover:bg-white/10 transition-all group"
+          className="p-6 md:p-8 bg-gradient-to-br from-white/[0.05] to-transparent border border-white/10 rounded-3xl flex flex-col gap-4 hover:border-accent/40 hover:bg-white/[0.08] transition-all group relative overflow-hidden backdrop-blur-sm"
         >
-          <div className="flex justify-between items-start">
-            <div className="text-white/40 text-xs uppercase tracking-wider font-bold">
-              {item.tag ? item.tag : (slide.type === 'powerups' ? 'Add-on' : 'System-Included')}
+          {/* Subtle Accent Glow on Hover */}
+          <div className="absolute -top-24 -right-24 w-48 h-48 bg-accent/5 blur-[80px] rounded-full group-hover:bg-accent/10 transition-colors pointer-events-none" />
+
+          <div className="flex justify-between items-start relative z-10">
+            <div className="text-white/30 text-[10px] uppercase tracking-[0.2em] font-black">
+              {item.tag ? item.tag : (slide.type === 'powerups' ? 'Add-on' : 'Core Integration')}
             </div>
-            {item.icon && <item.icon className="text-accent opacity-50 group-hover:opacity-100 transition-opacity" size={20} />}
+            <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-accent/40 group-hover:text-accent group-hover:scale-110 transition-all border border-white/5 group-hover:border-accent/20">
+              {item.icon ? <item.icon size={20} /> : <Rocket size={20} />}
+            </div>
           </div>
 
-          <div className="text-xl font-bold text-white font-heading">{item.title}</div>
+          <div className="text-xl md:text-2xl font-black text-white font-heading tracking-tight group-hover:text-accent transition-colors relative z-10">
+            {item.title}
+          </div>
 
-          {item.desc && <div className="text-white/60 text-sm leading-relaxed">{item.desc}</div>}
+          {item.desc && <div className="text-white/50 text-sm md:text-base leading-relaxed group-hover:text-white/70 transition-colors relative z-10">{item.desc}</div>}
 
           {item.value && (
-            <div className="text-accent text-2xl font-mono font-bold mt-auto pt-4 border-t border-white/5">
-              {item.value}
+            <div className="mt-auto pt-6 border-t border-white/5 flex items-baseline gap-2 relative z-10">
+              <div className="text-accent text-3xl md:text-4xl font-black font-heading tracking-tighter drop-shadow-[0_0_15px_rgba(220,38,38,0.3)]">
+                {item.value}
+              </div>
+              <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
             </div>
           )}
         </motion.div>
@@ -769,8 +783,10 @@ const GridSlide = ({ slide }) => (
     </div>
 
     {slide.highlight && (
-      <div className="mt-8 p-4 bg-accent/10 border border-accent/20 rounded-xl text-center text-accent font-bold">
-        {slide.highlight}
+      <div className="mt-10 p-6 bg-accent/5 border border-accent/20 rounded-2xl flex items-center justify-center text-center">
+        <div className="text-accent font-black uppercase tracking-[0.2em] text-sm md:text-base">
+          {slide.highlight}
+        </div>
       </div>
     )}
 
