@@ -81,22 +81,23 @@ export const slides = [
             "Knowledge lives in people, not processes",
             "Results: Inconsistent, hard to repeat, impossible to scale"
         ],
-        footer: "Chains don’t scale people. They scale systems.",
+        footer: "Elite communities don’t scale people. They scale systems.",
         icon: Users
     },
     {
         id: 5,
         type: 'list',
-        title: "WHAT BIG CHAINS DO DIFFERENTLY",
-        subtitle: "SYSTEMS OVER SCALE",
-        mainIdea: "Big chains don’t rely on exceptional people. They rely on exceptionally clear systems.",
+        title: "HOW ELITE COMMUNITIES SCALE",
+        subtitle: "SYSTEMS OVER MANUAL EFFORT",
+        mainIdea: "High-performance communities like FitMomsClub don't rely on manual hustle. They rely on exceptionally clear systems.",
         points: [
-            "Standardised onboarding & sales flows (Every time)",
-            "Automated follow-ups & retention logic (Nothing slips)",
-            "Unified reporting — one version of truth",
-            "People can change. Performance doesn’t."
+            "Standardised onboarding & sales journeys (Every single time)",
+            "Automated follow-ups & retention logic (Nothing slips through the cracks)",
+            "Unified reporting across all locations & online zones",
+            "Proven systems we've deployed for elite communities like FitMomsClub",
+            "Systems that ensure performance doesn't change when people do"
         ],
-        footer: "The system runs the gym. People run the system.",
+        footer: "The system runs the community. People run the system.",
         icon: LayoutGrid
     },
     {
