@@ -2,12 +2,15 @@ import React, { useState } from 'react';
 import { Maximize2, Minimize2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-const WebsiteMockup = ({ onFullscreenToggle }) => {
-    const [isFullscreen, setIsFullscreen] = useState(false);
+const WebsiteMockup = ({ onFullscreenToggle, isFullscreen: externalIsFullscreen }) => {
+    const [internalIsFullscreen, setInternalIsFullscreen] = useState(false);
+
+    // Use external prop if provided, otherwise internal state
+    const isFullscreen = externalIsFullscreen !== undefined ? externalIsFullscreen : internalIsFullscreen;
 
     const toggleFullscreen = () => {
         const newState = !isFullscreen;
-        setIsFullscreen(newState);
+        if (externalIsFullscreen === undefined) setInternalIsFullscreen(newState);
         if (onFullscreenToggle) onFullscreenToggle(newState);
     };
 
@@ -480,6 +483,7 @@ const WebsiteMockup = ({ onFullscreenToggle }) => {
                     <div
                         className="w-2.5 h-2.5 rounded-full bg-green-500 cursor-pointer hover:bg-green-600 transition-colors flex items-center justify-center group-hover:scale-110"
                         onClick={toggleFullscreen}
+                        title="Enter Fullscreen"
                     >
                         {isFullscreen ? <Minimize2 size={6} className="text-black opacity-0 group-hover:opacity-100" /> : <Maximize2 size={6} className="text-black opacity-0 group-hover:opacity-100" />}
                     </div>

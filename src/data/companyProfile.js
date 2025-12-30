@@ -145,9 +145,16 @@ export const slides = [
                 label: 'Smart Website',
                 icon: Monitor,
                 content: {
-                    type: 'component',
+                    type: 'split-preview', // NEW TYPE to signal 2-column layout
                     componentName: 'WebsiteMockup',
-                    note: 'Interactive Preview: Navigate a high-converting gym website.'
+                    title: "CONVERSION ENGINE",
+                    desc: "Most gym websites are just digital brochures. Ours is a 24/7 sales team designed to capture leads.",
+                    features: [
+                        "Smart Lead Tracking & AI Captures the lead 24/7",
+                        "Ad Precision: Track every lead source (Meta/Google)",
+                        "Instant Conversion: Auto-booking engine built-in"
+                    ],
+                    value: "Included (Bonus)"
                 }
             },
             {
@@ -155,9 +162,16 @@ export const slides = [
                 label: 'Custom App',
                 icon: Smartphone,
                 content: {
-                    type: 'component',
+                    type: 'split-preview',
                     componentName: 'MobileAppMockup',
-                    note: 'Interactive Preview: Click to explore the member experience.'
+                    title: "YOUR GYM IN POCKET",
+                    desc: "A world-class mobile experience that keeps your members addicted to their progress.",
+                    features: [
+                        "Seamless Booking: Classes, PT, and events",
+                        "Workout Tracking: Replace paper logs forever",
+                        "Gamification: Leaderboards & achievement badges"
+                    ],
+                    value: "Custom Build"
                 }
             },
             {
@@ -165,9 +179,17 @@ export const slides = [
                 label: '360° Tour',
                 icon: Globe,
                 content: {
-                    type: 'iframe',
-                    url: 'https://www.google.com/maps/embed?pb=!4v1766911809186!6m8!1m7!1sCAoSK0FGMVFpcE5PVlUydHBVSUJFYWlGSmh2OE5PYW1iaDk5dl9fN3d6amw2bTQ.!2m2!1d28.52171372208289!2d77.21604902752712!3f10.71!4f-8.269999999999996!5f0.4000000000000002',
-                    note: 'Interactive Preview: Drag to look around the facility.'
+                    type: 'split-preview',
+                    componentName: 'TourEmbed', // Special case for iframe
+                    embedUrl: 'https://www.google.com/maps/embed?pb=!4v1766911809186!6m8!1m7!1sCAoSK0FGMVFpcE5PVlUydHBVSUJFYWlGSmh2OE5PYW1iaDk5dl9fN3d6amw2bTQ.!2m2!1d28.52171372208289!2d77.21604902752712!3f10.71!4f-8.269999999999996!5f0.4000000000000002',
+                    title: "IMMERSIVE TRUST",
+                    desc: "Trust is built when they can see where they're going to train.",
+                    features: [
+                        "Google Maps Integration: Appear in search results",
+                        "High Conversion: Increase bookings by 85%",
+                        "2 Locations Included: Professionally shot"
+                    ],
+                    value: "Included (Bonus)"
                 }
             }
         ]

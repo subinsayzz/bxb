@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronRight, ChevronLeft, ArrowRight, Check, X, Plus, Lock, Rocket, ShieldCheck, TrendingUp, Zap, Dumbbell, Layers, Monitor, Smartphone, Globe } from 'lucide-react';
+import { ChevronRight, ChevronLeft, ArrowRight, Check, X, Plus, Lock, Rocket, ShieldCheck, TrendingUp, Zap, Dumbbell, Layers, Monitor, Smartphone, Globe, Maximize2 } from 'lucide-react';
 import MobileAppMockup from '../MobileAppMockup';
 import WebsiteMockup from '../WebsiteMockup';
 import '../index.css';
@@ -64,62 +64,211 @@ const Header = ({ title, subtitle, slideIndex, totalSlides }) => (
     </div>
 );
 
+// 8. INTERACTIVE TABS SLIDE
 const InteractiveTabsSlide = ({ slide, onFullscreenToggle }) => {
     const [activeTab, setActiveTab] = useState(slide.tabs[0].id);
+    const [isMockupFullscreen, setIsMockupFullscreen] = useState(false);
     const activeContent = slide.tabs.find(t => t.id === activeTab).content;
+
+    const handleFullscreenToggle = (isFull) => {
+        setIsMockupFullscreen(isFull); // Track locally to adjust styles
+        if (onFullscreenToggle) onFullscreenToggle(isFull); // Propagate to Deck
+    };
+
+    // Helper to render the specific component or iframe within the Split View
+    const renderSplitPreview = () => {
+        if (activeContent.componentName === 'WebsiteMockup') {
+            return (
+                <div className={`w-full h-full relative overflow-hidden bg-[#050505] rounded-r-2xl border-l border-white/5 group ${isMockupFullscreen ? 'z-[9999]' : ''}`}>
+                    {/* Simulated 1440px Desktop Viewport. 
+                        CRITICAL FIX: When fullscreen, we must REMOVE the transform/scale so fixed positioning works relative to viewport. 
+                    */}
+                    <div className={`absolute inset-0 origin-top-left transition-transform duration-0 ${isMockupFullscreen ? '' : 'w-[200%] h-[200%] transform scale-[0.5]'}`}>
+                        <WebsiteMockup onFullscreenToggle={handleFullscreenToggle} isFullscreen={isMockupFullscreen} />
+                    </div>
+
+                    {/* Clear Enlargement Call-to-Action - ON HOVER ONLY for sleekness */}
+                    {!isMockupFullscreen && (
+                        <button
+                            onClick={() => handleFullscreenToggle(true)}
+                            className="absolute top-6 right-6 z-50 bg-black/70 backdrop-blur-md text-white/90 hover:text-white px-5 py-2.5 rounded-full flex items-center gap-2.5 border border-white/20 hover:bg-accent hover:border-accent transition-all cursor-pointer shadow-2xl scale-95 hover:scale-105 opacity-0 group-hover:opacity-100 duration-300"
+                        >
+                            <Maximize2 size={16} />
+                            <span className="text-xs font-bold uppercase tracking-wider">Enlarge</span>
+                        </button>
+                    )}
+                </div>
+            );
+        }
+        if (activeContent.componentName === 'MobileAppMockup') {
+            return (
+                <div className="w-full h-full flex items-center justify-center relative overflow-visible">
+                    {/* Clean Ambient Glow */}
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[600px] bg-accent/5 blur-[80px] rounded-full pointer-events-none" />
+
+                    <div className="relative z-10 w-max h-max">
+                        {/* Mockup Container */}
+                        <div className="transform scale-[0.80] md:scale-[0.85] xl:scale-[0.90] origin-center">
+                            <MobileAppMockup />
+                        </div>
+
+                        {/* FEATURE NODES (Overlay) - Positioned with calculated offset to touch bezel only */}
+
+                        {/* Node 1: Branding (Top Left) */}
+                        <div className="absolute top-[12%] -left-[40px] md:-left-[230px] flex items-center gap-2 animate-in fade-in slide-in-from-right-8 duration-700 delay-300 pointer-events-none">
+                            <div className="bg-black/90 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10 text-[10px] uppercase font-bold text-white shadow-2xl whitespace-nowrap hidden md:block">
+                                Custom Branding
+                            </div>
+                            <div className="w-8 md:w-24 h-[1px] bg-gradient-to-l from-accent to-transparent" />
+                            <div className="w-1.5 h-1.5 rounded-full bg-accent box-shadow-[0_0_10px_rgba(59,130,246,0.8)]" />
+                        </div>
+
+                        {/* Node 2: Booking (Middle Right) */}
+                        <div className="absolute top-[42%] -right-[40px] md:-right-[230px] flex items-center gap-2 flex-row-reverse animate-in fade-in slide-in-from-left-8 duration-700 delay-500 pointer-events-none">
+                            <div className="bg-black/90 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10 text-[10px] uppercase font-bold text-white shadow-2xl whitespace-nowrap hidden md:block">
+                                1-Tap Booking
+                            </div>
+                            <div className="w-8 md:w-24 h-[1px] bg-gradient-to-r from-accent to-transparent" />
+                            <div className="w-1.5 h-1.5 rounded-full bg-accent box-shadow-[0_0_10px_rgba(59,130,246,0.8)]" />
+                        </div>
+
+                        {/* Node 3: Gamification (Bottom Left) */}
+                        <div className="absolute bottom-[22%] -left-[40px] md:-left-[230px] flex items-center gap-2 animate-in fade-in slide-in-from-right-8 duration-700 delay-700 pointer-events-none">
+                            <div className="bg-black/90 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10 text-[10px] uppercase font-bold text-white shadow-2xl whitespace-nowrap hidden md:block">
+                                Gamified Progress
+                            </div>
+                            <div className="w-8 md:w-24 h-[1px] bg-gradient-to-l from-accent to-transparent" />
+                            <div className="w-1.5 h-1.5 rounded-full bg-accent box-shadow-[0_0_10px_rgba(59,130,246,0.8)]" />
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+        if (activeContent.componentName === 'TourEmbed') {
+            return (
+                <div className="w-full h-full relative group bg-[#050505] rounded-r-2xl overflow-hidden border-l border-white/5">
+                    <iframe
+                        src={activeContent.embedUrl}
+                        className="w-full h-full border-0 opacity-100 mix-blend-normal"
+                        allowFullScreen
+                        loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"
+                    />
+                    {/* Interactive hint overlay */}
+                    <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/40 via-transparent to-black/20" />
+                    <div className="absolute top-6 left-6 bg-black/80 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 flex items-center gap-2 pointer-events-none z-10 shadow-lg">
+                        <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                        <span className="text-[10px] font-bold text-white uppercase tracking-widest">Live 360° View</span>
+                    </div>
+                </div>
+            );
+        }
+        // Fallback for generic Iframe if needed
+        if (activeContent.type === 'iframe') {
+            return <iframe src={activeContent.url} className="w-full h-full border-0" title={activeTab} allowFullScreen />;
+        }
+        return null;
+    };
 
     return (
         <div className="h-full flex flex-col">
-            {/* Header */}
-            <div className="mb-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
-                <div className="text-xl md:text-2xl text-white/80 font-heading">{slide.mainIdea}</div>
-                {/* Tabs Nav */}
-                <div className="flex bg-white/5 p-1 rounded-full border border-white/5 self-start md:self-auto">
-                    {slide.tabs.map(tab => (
-                        <button
-                            key={tab.id}
-                            onClick={() => setActiveTab(tab.id)}
-                            className={`flex items-center gap-2 px-4 py-2 rounded-full text-xs md:text-sm font-bold transition-all ${activeTab === tab.id
-                                ? 'bg-accent text-white shadow-lg shadow-accent/20'
-                                : 'text-white/40 hover:text-white'
-                                }`}
-                        >
-                            <tab.icon size={16} />
-                            <span className="hidden md:inline">{tab.label}</span>
-                        </button>
-                    ))}
+            {/* Header Area with Tabs on Right */}
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-6 shrink-0">
+                <div className="text-xl text-white/60 font-light max-w-xl leading-snug">
+                    {slide.mainIdea}
+                </div>
+
+                {/* Tabs Header */}
+                <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide shrink-0">
+                    {slide.tabs.map((tab) => {
+                        const isActive = activeTab === tab.id;
+                        return (
+                            <button
+                                key={tab.id}
+                                onClick={() => setActiveTab(tab.id)}
+                                className={`flex items-center gap-2 px-4 py-3 rounded-xl border transition-all whitespace-nowrap ${isActive
+                                    ? 'bg-[#1a1a1a] border-accent text-white shadow-lg'
+                                    : 'bg-transparent border-transparent text-white/40 hover:text-white hover:bg-white/5'
+                                    }`}
+                            >
+                                <tab.icon size={18} className={isActive ? 'text-accent' : ''} />
+                                <span className="font-bold uppercase tracking-wide text-xs md:text-sm">{tab.label}</span>
+                            </button>
+                        );
+                    })}
                 </div>
             </div>
 
-            {/* Content Area */}
-            <motion.div
-                key={activeTab}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3 }}
-                className="flex-1 overflow-hidden relative rounded-2xl border border-white/10 bg-black/20"
-            >
-                {activeContent.type === 'iframe' && (
-                    <iframe src={activeContent.url} className="w-full h-full border-0" title={activeTab} allowFullScreen />
-                )}
-                {activeContent.type === 'component' && activeContent.componentName === 'MobileAppMockup' && (
-                    <div className="w-full h-full flex items-center justify-center p-4 bg-gradient-to-br from-zinc-900 to-black">
-                        <div className="transform scale-[0.85] md:scale-100 origin-center">
-                            <MobileAppMockup />
-                        </div>
-                    </div>
-                )}
-                {activeContent.type === 'component' && activeContent.componentName === 'WebsiteMockup' && (
-                    <div className="w-full h-full">
-                        <WebsiteMockup onFullscreenToggle={onFullscreenToggle} />
-                    </div>
-                )}
+            {/* Split Content Area - Seamless & Blended */}
+            <div className="flex-1 bg-[#0a0a0a] rounded-3xl border border-white/5 overflow-hidden relative shadow-2xl flex flex-col lg:flex-row">
 
-                {/* Note Overlay */}
-                <div className="absolute bottom-4 right-4 md:bottom-6 md:right-6 bg-black/80 backdrop-blur-md px-4 py-2 rounded-lg border border-white/10 text-[10px] md:text-xs font-mono text-accent shadow-xl z-10 pointer-events-none">
-                    {activeContent.note}
-                </div>
-            </motion.div>
+                {activeContent.type === 'split-preview' ? (
+                    <>
+                        {/* LEFT COLUMN: Features & Explainer */}
+                        <div className="w-full lg:w-[40%] p-8 lg:p-10 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-white/5 bg-[#0a0a0a] relative z-10">
+                            <motion.div
+                                key={`text-${activeTab}`}
+                                initial={{ opacity: 0, x: -20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ duration: 0.3 }}
+                                className="space-y-8"
+                            >
+                                <div>
+                                    <h3 className="text-3xl font-black uppercase italic font-heading text-white mb-3">
+                                        {activeContent.title}
+                                    </h3>
+                                    <p className="text-white/50 leading-relaxed font-light text-base">
+                                        {activeContent.desc}
+                                    </p>
+                                </div>
+
+                                <div className="grid gap-4">
+                                    {activeContent.features.map((feat, i) => (
+                                        <div key={i} className="flex items-center gap-4 text-white/80 group">
+                                            <div className="w-8 h-8 rounded-full bg-accent/5 flex items-center justify-center text-accent/50 group-hover:bg-accent group-hover:text-white transition-all shrink-0">
+                                                <Check size={14} strokeWidth={3} />
+                                            </div>
+                                            <span className="text-sm font-medium">{feat}</span>
+                                        </div>
+                                    ))}
+                                </div>
+
+                                {/* Dynamic Value Display */}
+                                {activeContent.value && (
+                                    <div className="pt-6 border-t border-white/5">
+                                        <div className="flex items-center gap-4">
+                                            <div>
+                                                <div className="text-[10px] text-white/30 font-bold uppercase tracking-widest mb-1">Estimated Value</div>
+                                                <div className="text-xl text-white font-bold tracking-tight">
+                                                    {activeContent.value.replace('Value:', '').replace('VALUE:', '')}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )}
+                            </motion.div>
+                        </div>
+
+                        {/* RIGHT COLUMN: Interactive Preview */}
+                        <div className="w-full lg:w-[60%] h-full relative bg-[#050505]">
+                            <motion.div
+                                key={`preview-${activeTab}`}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ duration: 0.5 }}
+                                className="w-full h-full"
+                            >
+                                {renderSplitPreview()}
+                            </motion.div>
+                        </div>
+                    </>
+                ) : (
+                    // Fallback
+                    <div className="w-full h-full relative">
+                        {renderSplitPreview()}
+                    </div>
+                )}
+            </div>
         </div>
     );
 };
@@ -295,7 +444,7 @@ const ComparisonSlide = ({ slide }) => (
                             transition={{ delay: 0.2 + (i * 0.1) }}
                             className="text-white text-xl font-medium flex items-start gap-4"
                         >
-                            <div className="w-1.5 h-1.5 rounded-full bg-accent mt-2.5 flex-shrink-0 shadow-[0_0_10px_rgba(220,38,38,0.8)]" />
+                            <div className="w-1.5 h-1.5 rounded-full bg-accent mt-2.5 flex-shrink-0 shadow-[0_0_10px_rgba(59,130,246,0.8)]" />
                             <span className="leading-relaxed">{item}</span>
                         </motion.li>
                     ))}
@@ -760,7 +909,7 @@ const GridSlide = ({ slide }) => (
 
                     {item.value && (
                         <div className="mt-auto pt-6 border-t border-white/5 flex items-baseline gap-2 relative z-10">
-                            <div className="text-accent text-3xl md:text-4xl font-black font-heading tracking-tighter drop-shadow-[0_0_15px_rgba(220,38,38,0.3)]">
+                            <div className="text-accent text-3xl md:text-4xl font-black font-heading tracking-tighter drop-shadow-[0_0_15px_rgba(59,130,246,0.3)]">
                                 {item.value}
                             </div>
                             <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
@@ -797,7 +946,7 @@ const FinalCtaSlide = ({ slide }) => (
     <div className="flex flex-col items-center justify-center h-full text-center p-4">
         <motion.div
             initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
-            className="mb-10 p-8 bg-accent/10 rounded-full ring-1 ring-accent/30 shadow-[0_0_50px_rgba(220,38,38,0.3)]"
+            className="mb-10 p-8 bg-accent/10 rounded-full ring-1 ring-accent/30 shadow-[0_0_50px_rgba(59,130,246,0.3)]"
         >
             <Rocket size={80} className="text-accent" />
         </motion.div>
@@ -837,7 +986,7 @@ const FinalCtaSlide = ({ slide }) => (
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="group relative inline-flex items-center gap-4 px-12 py-6 bg-accent text-white font-black text-xl uppercase tracking-widest rounded-full shadow-[0_0_30px_rgba(220,38,38,0.5)] hover:shadow-[0_0_50px_rgba(220,38,38,0.8)] transition-all overflow-hidden"
+            className="group relative inline-flex items-center gap-4 px-12 py-6 bg-accent text-white font-black text-xl uppercase tracking-widest rounded-full shadow-[0_0_30px_rgba(59,130,246,0.5)] hover:shadow-[0_0_50px_rgba(59,130,246,0.8)] transition-all overflow-hidden"
         >
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-[150%] group-hover:translate-x-[150%] transition-transform duration-700 ease-in-out" />
             <span className="relative z-10">{slide.ctaText}</span>
@@ -847,6 +996,73 @@ const FinalCtaSlide = ({ slide }) => (
 );
 
 // --- MAIN DECK COMPONENT ---
+
+// 9. NEW: PREVIEW SPLIT SLIDE (2 Col: Left Text, Right Preview)
+const PreviewSplitSlide = ({ slide, onFullscreenToggle }) => {
+    // Determine which component to render
+    const renderPreview = () => {
+        if (slide.componentName === 'WebsiteMockup') return <WebsiteMockup onFullscreenToggle={onFullscreenToggle} />;
+        if (slide.componentName === 'MobileAppMockup') return <MobileAppMockup />;
+        return null;
+    };
+
+    return (
+        <div className="grid lg:grid-cols-2 gap-8 h-full items-center">
+            {/* Left Column: Explainer */}
+            <div className="space-y-6 order-2 lg:order-1 relative z-10">
+                <div>
+                    <div className="text-accent font-bold tracking-widest uppercase mb-2 text-sm">
+                        {slide.subtitle}
+                    </div>
+                    <div className="text-3xl md:text-5xl font-heading font-black text-white leading-none uppercase">
+                        {slide.title}
+                    </div>
+                </div>
+
+                <div className="text-xl text-white/60 leading-relaxed max-w-lg font-light">
+                    {slide.mainIdea}
+                </div>
+
+                {/* Features List */}
+                <div className="space-y-4 py-4">
+                    {slide.features && slide.features.map((feature, i) => (
+                        <motion.div
+                            key={i}
+                            initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} delay={0.3 + (i * 0.1)}
+                            className="flex items-center gap-4"
+                        >
+                            <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-accent shrink-0">
+                                <Check size={14} />
+                            </div>
+                            <div className="text-white font-bold tracking-wide text-lg">{feature}</div>
+                        </motion.div>
+                    ))}
+                </div>
+
+                {/* Value Pill */}
+                {slide.note && (
+                    <motion.div
+                        initial={{ opacity: 0 }} animate={{ opacity: 1 }} delay={0.6}
+                        className="inline-flex items-center gap-3 px-6 py-3 bg-accent/10 border border-accent/20 rounded-full"
+                    >
+                        <Zap size={16} className="text-accent fill-accent" />
+                        <span className="text-accent font-black tracking-widest uppercase text-sm">{slide.note}</span>
+                    </motion.div>
+                )}
+            </div>
+
+            {/* Right Column: Component Preview */}
+            <div className="h-full w-full relative order-1 lg:order-2 flex items-center justify-center">
+                {/* Background Glow */}
+                <div className="absolute inset-0 bg-accent/5 blur-[100px] rounded-full pointer-events-none" />
+
+                <div className="relative z-10 w-full h-full max-h-[700px] flex items-center justify-center">
+                    {renderPreview()}
+                </div>
+            </div>
+        </div>
+    );
+};
 
 const Deck = ({ slides }) => {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -900,6 +1116,7 @@ const Deck = ({ slides }) => {
             case 'final-cta': return <FinalCtaSlide {...props} />;
             case 'interactive-tabs': return <InteractiveTabsSlide {...props} />;
             case 'app-showcase': return <AppShowcaseSlide {...props} />;
+            case 'preview-split': return <PreviewSplitSlide {...props} />;
             default: return <HighlightSlide {...props} />;
         }
     };
@@ -916,7 +1133,7 @@ const Deck = ({ slides }) => {
             {/* Progress Bar */}
             <div className="fixed top-0 left-0 w-full h-1 bg-white/5 z-50">
                 <motion.div
-                    className="h-full bg-accent shadow-[0_0_10px_rgba(220,38,38,0.8)]"
+                    className="h-full bg-accent shadow-[0_0_10px_rgba(59,130,246,0.8)]"
                     initial={{ width: 0 }}
                     animate={{ width: `${((currentSlide + 1) / slides.length) * 100}%` }}
                     transition={{ duration: 0.3 }}
